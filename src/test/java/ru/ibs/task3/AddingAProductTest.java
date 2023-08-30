@@ -1,9 +1,10 @@
-package ru.ibs;
+package ru.ibs.task3;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import ru.ibs.ConfProperties;
 
 
 public class AddingAProductTest extends BaseClass {
@@ -13,7 +14,7 @@ public class AddingAProductTest extends BaseClass {
     By btnSave = By.id("save");
     By fldType = By.id("type");
     By cbExotic = By.id("exotic");
-    By title = By.id(ConfProperties.getTitle("title"));
+    By title = By.id(ConfProperties.getProperty("title"));
 //    переменные имеющие на конце 1 искались по xpath
 //    переменные имеющие на конце 2 искались по css
     By btnDownList1 = By.xpath("//div[@class='dropdown-menu show']");
@@ -39,18 +40,18 @@ public class AddingAProductTest extends BaseClass {
         driver.findElement(btnPesochnisa).click();
 //       проверка видимости выпадающего списка
         Assertions.assertTrue(driver.findElement(btnDownList1).isDisplayed(),
-                ConfProperties.getMsgDownList("msgDownList"));
+                ConfProperties.getProperty("msgDownList"));
 //       клик по кнопке "Товары"
         driver.findElement(btnFood1).click();
 //       проверка перехода на страницу "Товары"
-        Assertions.assertEquals(ConfProperties.getUrlFood("urlFood"),
-                driver.getCurrentUrl(), ConfProperties.getMsgNotFood("msgNotFood"));
+        Assertions.assertEquals(ConfProperties.getProperty("urlFood"),
+                driver.getCurrentUrl(), ConfProperties.getProperty("msgNotFood"));
 //       клик на кнопку "Добавить"
         driver.findElement(btnAdd1).click();
 //       явное ожидание заголовка "Добавление товара"
         wait.until(ExpectedConditions.visibilityOfElementLocated(title));
 //       проверка видимости заголовка "Добваление товара"
-        Assertions.assertTrue(driver.findElement(title).isDisplayed(), ConfProperties.getMsgNoTitle("msgNoTitle"));
+        Assertions.assertTrue(driver.findElement(title).isDisplayed(), ConfProperties.getProperty("msgNoTitle"));
 //       заполнение поля "Наименование"
         driver.findElement(fldName).sendKeys("Картофель");
 //       клик на кнопку "Сохранить"
@@ -76,18 +77,18 @@ public class AddingAProductTest extends BaseClass {
         driver.findElement(btnPesochnisa).click();
 //        проверка видимости выпадающего списка
         Assertions.assertTrue(driver.findElement(btnDownList2).isDisplayed(),
-                ConfProperties.getMsgDownList("msgDownList"));
+                ConfProperties.getProperty("msgDownList"));
 //        клик по кнопке "Товары"
         driver.findElement(btnFood2).click();
 //        проверка перехода на страницу "Товары"
-        Assertions.assertEquals(ConfProperties.getUrlFood("urlFood"), driver.getCurrentUrl(),
-                ConfProperties.getMsgNotFood("msgNotFood"));
+        Assertions.assertEquals(ConfProperties.getProperty("urlFood"), driver.getCurrentUrl(),
+                ConfProperties.getProperty("msgNotFood"));
 //        клик на кнопку "Добавить"
         driver.findElement(btnAdd2).click();
 //        явное ожидание заголовка "Добавление товара"
         wait.until(ExpectedConditions.visibilityOfElementLocated(title));
 //        проверка видимости заголовка "Добваление товара"
-        Assertions.assertTrue(driver.findElement(title).isDisplayed(), ConfProperties.getMsgNoTitle("msgNoTitle"));
+        Assertions.assertTrue(driver.findElement(title).isDisplayed(), ConfProperties.getProperty("msgNoTitle"));
 //        заполнение поля "Наименование"
         driver.findElement(fldName).sendKeys("Ананас");
 //        клик на кнопку "Тип"

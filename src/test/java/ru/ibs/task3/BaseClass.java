@@ -1,4 +1,4 @@
-package ru.ibs;
+package ru.ibs.task3;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;

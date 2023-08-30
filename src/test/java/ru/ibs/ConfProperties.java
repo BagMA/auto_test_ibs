@@ -28,19 +28,4 @@ public class ConfProperties {
         return PROPERTIES.getProperty(key);
     }
 
-    public static String getTitle(String key) {
-        return PROPERTIES.getProperty(key);
-    }
-    public static String getUrlFood(String key) {
-        return PROPERTIES.getProperty(key);
-    }
-    public static String getMsgDownList(String key) {
-        return PROPERTIES.getProperty(key);
-    }
-    public static String getMsgNotFood(String key) {
-        return PROPERTIES.getProperty(key);
-    }
-    public static String getMsgNoTitle(String key) {
-        return PROPERTIES.getProperty(key);
-    }
 }
