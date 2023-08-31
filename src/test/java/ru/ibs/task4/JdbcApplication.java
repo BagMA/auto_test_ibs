@@ -26,9 +26,10 @@ public class JdbcApplication {
             stmt.setString(4, exotic);
             stmt.executeUpdate();
             System.out.println(fruit + " добавлен");
-            try(Statement st = connection.createStatement()) {
+            try(PreparedStatement prst = connection.prepareStatement("SELECT * FROM FOOD WHERE FOOD_ID = ?")) {
+                prst.setString(1, id);
+                try (ResultSet resultSet1 = prst.executeQuery()) {
 
-                try (ResultSet resultSet1 = st.executeQuery("SELECT * FROM FOOD WHERE FOOD_ID = " + id)) {
                     String name = null;
                     Integer id = null;
                     String type = null;

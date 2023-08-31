@@ -7,11 +7,12 @@ import java.util.List;
 public class MethodsCrud {
 
     public static List<String> deleteFood(String id, Connection connection, String sqlShowFood) throws SQLException {
-        String sql = "DELETE FROM food WHERE food_id = "+id ;
+        String sql = "DELETE FROM food WHERE food_id = ?";
         List<String> names = new ArrayList<>();
-        try (Statement ps  = connection.createStatement()) {
-            ps.executeUpdate(sql);
-            try (ResultSet resultSet3 = ps.executeQuery(sqlShowFood)) {
+        try (PreparedStatement ps  = connection.prepareStatement(sql)) {
+            ps.setString(1, id);
+            ps.executeUpdate();
+            try (Statement st = connection.createStatement(); ResultSet resultSet3 = st.executeQuery(sqlShowFood)) {
                 while (resultSet3.next()) {
                     String name = resultSet3.getString(2);
                     names.add(name);
